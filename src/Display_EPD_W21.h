@@ -1,8 +1,6 @@
 #ifndef _DISPLAY_EPD_W21_H_
 #define _DISPLAY_EPD_W21_H_
 
-#include "../epd32_epd.h"
-
 #define EPD_WIDTH   400 
 #define EPD_HEIGHT  300
 #define EPD_ARRAY  EPD_WIDTH*EPD_HEIGHT/8  

@@ -1,10 +1,10 @@
-#ifndef _DISPLAY_EPD_W21_SPI_
-#define _DISPLAY_EPD_W21_SPI_
+#ifndef DISPLAY_EPD_W21_SPI_
+#define DISPLAY_EPD_W21_SPI_
 #include "Arduino.h"
 
 //IO settings
-//SCK--GPIO23(SCLK)
-//SDIN---GPIO18(MOSI)
+//SCK--GPIO18(SCLK)
+//SDIN---GPIO23(MOSI)
 #define isEPD_W21_BUSY digitalRead(A14)  //BUSY
 #define EPD_W21_RST_0 digitalWrite(A15,LOW)  //RES
 #define EPD_W21_RST_1 digitalWrite(A15,HIGH)

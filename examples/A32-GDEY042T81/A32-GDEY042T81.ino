@@ -1,10 +1,7 @@
 #include <SPI.h>
+#include"Ap_29demo.h"
 //EPD
-#include <esp32_epd.h>
-#include <GDEY042T81/Display_EPD_W21.h>   // 4.2" b/w
-
-
-
+#include"esp32_epd.h"
 
 void setup() {
    pinMode(A14, INPUT);  //BUSY
