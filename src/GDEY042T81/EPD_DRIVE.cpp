@@ -1,5 +1,5 @@
-#include "Display_EPD_W21_spi.h"
-#include "Display_EPD_W21.h"
+#include "EPD_SPI.h"
+#include "EPD_DRIVE.h"
 
 //Delay Functions
 void delay_xms(unsigned int xms)
@@ -13,10 +13,10 @@ void Epaper_READBUSY(void)
 { 
   while(1)
   {	 //=1 BUSY
-     if(isEPD_W21_BUSY==0) break;;
+     if(isEPD_W21_BUSY==0) break;
   }  
 }
-//Full screen refresh initialization
+//Full screen update initialization
 void EPD_HW_Init(void)
 {
 	EPD_W21_RST_0;  // Module reset   
@@ -60,7 +60,7 @@ void EPD_HW_Init(void)
   Epaper_READBUSY();
 	
 }
-//Fast refresh 1 initialization
+//Fast update 1 initialization
 void EPD_HW_Init_Fast(void)
 {
 	EPD_W21_RST_0;  // Module reset   
@@ -111,7 +111,7 @@ void EPD_HW_Init_Fast(void)
 
 
 //////////////////////////////Display Update Function///////////////////////////////////////////////////////
-//Full screen refresh update function
+//Full screen update update function
 void EPD_Update(void)
 {   
   EPD_W21_WriteCMD(0x22); //Display Update Control
@@ -120,7 +120,7 @@ void EPD_Update(void)
   Epaper_READBUSY();   
 
 }
-//Fast refresh 1 update function
+//Fast update 1 update function
 void EPD_Update_Fast(void)
 {   
   EPD_W21_WriteCMD(0x22); //Display Update Control
@@ -129,7 +129,7 @@ void EPD_Update_Fast(void)
   Epaper_READBUSY();   
 
 }
-//4 Gray refresh update function
+//4 Gray update update function
 void EPD_Update_4G(void)
 {   
   EPD_W21_WriteCMD(0x22); //Display Update Control
@@ -138,7 +138,7 @@ void EPD_Update_4G(void)
   Epaper_READBUSY();   
 
 }
-//Partial refresh update function
+//Partial update update function
 void EPD_Part_Update(void)
 {
 	EPD_W21_WriteCMD(0x22); //Display Update Control
@@ -147,7 +147,7 @@ void EPD_Part_Update(void)
 	Epaper_READBUSY(); 			
 }
 //////////////////////////////Display Data Transfer Function////////////////////////////////////////////
-//Full screen refresh display function
+//Full screen update display function
 void EPD_WhiteScreen_ALL(const unsigned char *datas)
 {
    unsigned int i;	
@@ -163,7 +163,7 @@ void EPD_WhiteScreen_ALL(const unsigned char *datas)
    }	 
    EPD_Update();	 
 }
-//Fast refresh display function
+//Fast update display function
 void EPD_WhiteScreen_ALL_Fast(const unsigned char *datas)
 {
    unsigned int i;	
@@ -213,7 +213,7 @@ void EPD_WhiteScreen_Black(void)
 	}
 	EPD_Update();
 }
-//Partial refresh of background display, this function is necessary, please do not delete it!!!
+//Partial update of background display, this function is necessary, please do not delete it!!!
 void EPD_SetRAMValue_BaseMap( const unsigned char * datas)
 {
 	unsigned int i;   	
@@ -230,7 +230,7 @@ void EPD_SetRAMValue_BaseMap( const unsigned char * datas)
    EPD_Update();		 
 	 
 }
-//Partial refresh display
+//Partial update display
 void EPD_Dis_Part(unsigned int x_start,unsigned int y_start,const unsigned char * datas,unsigned int PART_COLUMN,unsigned int PART_LINE)
 {
 	unsigned int i;  
@@ -276,7 +276,7 @@ void EPD_Dis_Part(unsigned int x_start,unsigned int y_start,const unsigned char 
 	 EPD_Part_Update();
 
 }
-//Full screen partial refresh display
+//Full screen partial update display
 void EPD_Dis_PartAll(const unsigned char * datas)
 {
 	unsigned int i;  
@@ -310,7 +310,7 @@ void EPD_DeepSleep(void)
   delay_xms(100);
 }
 
-//Partial refresh write address and data
+//Partial update write address and data
 void EPD_Dis_Part_RAM(unsigned int x_start,unsigned int y_start,const unsigned char * datas,unsigned int PART_COLUMN,unsigned int PART_LINE)
 {
 	unsigned int i;  
@@ -474,15 +474,9 @@ void EPD_Display(unsigned char *Image)
 				 EPD_W21_WriteDATA(Image[i + j * Width]);
 			}
 	}
-	EPD_W21_WriteCMD(0x26);
-	for ( j = 0; j < Height; j++) {
-			for ( i = 0; i < Width; i++) {
-				 EPD_W21_WriteDATA(Image[i + j * Width]);
-			}
-	 EPD_Update();
-	}			
+	EPD_Update();		 
 }
-//4 Gray refresh  initialization
+//4 Gray update  initialization
 void EPD_HW_Init_4G(void)
 {
 	EPD_W21_RST_0;  // Module reset   
@@ -590,7 +584,7 @@ unsigned char R26_DTM2(unsigned char Image_data1,unsigned char Image_data2)
 		}
 		return outdata;
 }
-//4 Gray refresh display function
+//4 Gray update display function
 void EPD_WhiteScreen_ALL_4G(const unsigned char *datas)
 {
   unsigned int i; 

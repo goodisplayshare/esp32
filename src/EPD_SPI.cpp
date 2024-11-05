@@ -1,4 +1,4 @@
-#include "Display_EPD_W21_spi.h"
+#include "EPD_SPI.h"
 #include <SPI.h>
 
 //SPI write byte

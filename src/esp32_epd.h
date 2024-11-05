@@ -3,8 +3,10 @@
 
 #include <Arduino.h>
 #include <SPI.h>
-#include "Display_EPD_W21_spi.h"
-#include "Display_EPD_W21.h"
+#include "EPD_SPI.h"
+#include "GUI/fonts.h"
+#include "GUI/GUI_Paint.h"
+
 
 
 #endif

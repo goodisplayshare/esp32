@@ -1,10 +1,17 @@
-#ifndef DISPLAY_EPD_W21_SPI_
-#define DISPLAY_EPD_W21_SPI_
+#ifndef _EPD_SPI_H_
+#define _EPD_SPI_H_
 #include "Arduino.h"
 
 //IO settings
-//SCK--GPIO18(SCLK)
-//SDIN---GPIO23(MOSI)
+/*
+ESP32-WROOM-32D (Using hardware SPI)
+BUSY——A14
+RES——A15
+DC——A16
+CS——A17
+SCK—GPIO18
+SDIN—GPIO23
+*/
 #define isEPD_W21_BUSY digitalRead(A14)  //BUSY
 #define EPD_W21_RST_0 digitalWrite(A15,LOW)  //RES
 #define EPD_W21_RST_1 digitalWrite(A15,HIGH)
