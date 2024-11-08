@@ -1,3 +1,3 @@
-v1.0.6
-  工程文件创建功能，添加GUI绘图功能
+v1.0.4
+  宸ョ▼鏂囦欢鍒涘缓鍔熻兘锛屾坊鍔燝UI缁樺浘鍔熻兘
   Engineering file creation function, adding GUI drawing function
